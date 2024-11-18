@@ -1,4 +1,5 @@
 
+
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -51,6 +52,12 @@ builder.Services.AddAuthentication(options =>
 // Register the AuthService
 builder.Services.AddScoped<IAuthService, AuthService>();
 
+// Configure logging
+builder.Logging.ClearProviders();
+builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -58,6 +65,14 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
+else
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
+
+// Use the ExceptionMiddleware
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
@@ -66,3 +81,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+

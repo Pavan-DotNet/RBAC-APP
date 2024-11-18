@@ -1,4 +1,5 @@
 
+
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -6,24 +7,7 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
-  template: `
-    <h2>Register</h2>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" formControlName="username">
-      </div>
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email">
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" formControlName="password">
-      </div>
-      <button type="submit" [disabled]="!registerForm.valid">Register</button>
-    </form>
-  `,
+  templateUrl: './register.component.html',
   styles: []
 })
 export class RegisterComponent {
@@ -56,3 +40,4 @@ export class RegisterComponent {
     }
   }
 }
+

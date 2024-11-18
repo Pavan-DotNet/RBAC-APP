@@ -1,4 +1,5 @@
 
+
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -6,20 +7,7 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  template: `
-    <h2>Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" formControlName="username">
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" formControlName="password">
-      </div>
-      <button type="submit" [disabled]="!loginForm.valid">Login</button>
-    </form>
-  `,
+  templateUrl: './login.component.html',
   styles: []
 })
 export class LoginComponent {
@@ -51,3 +39,4 @@ export class LoginComponent {
     }
   }
 }
+

@@ -1,31 +1,11 @@
 
+
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../services/admin.service';
 
 @Component({
   selector: 'app-admin',
-  template: `
-    <h2>Admin Dashboard</h2>
-    <p>Welcome to the admin dashboard. Here you can manage users and roles.</p>
-    <div>
-      <h3>User Management</h3>
-      <ul>
-        <li *ngFor="let user of users">
-          {{ user.username }} - {{ user.email }}
-          <button (click)="assignRole(user.id, 'Admin')">Make Admin</button>
-          <button (click)="assignRole(user.id, 'User')">Make User</button>
-        </li>
-      </ul>
-    </div>
-    <div>
-      <h3>Create New Role</h3>
-      <input [(ngModel)]="newRoleName" placeholder="Enter role name">
-      <button (click)="createRole()">Create Role</button>
-    </div>
-    <div *ngIf="error" class="error">
-      {{ error }}
-    </div>
-  `,
+  templateUrl: './admin.component.html',
   styles: [`
     .error { color: red; }
   `]
@@ -81,3 +61,4 @@ export class AdminComponent implements OnInit {
     }
   }
 }
+
